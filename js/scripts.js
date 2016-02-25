@@ -1,22 +1,34 @@
-$(function() {
+var triangletracker = function(a,b,c) {
+  var sumab = a+b;
+  var sumbc = b+c;
+  var sumac = a+c;
+     if ((sumab <= c) || (sumbc <= a) || (sumac <= b)){
+        return "not a triangle"
+     }
+     else if ((a === b) && (b === c) && (c === a)){
+        return "equilateral";
+     } else if ((a === b) && (c !== a)){
+        return "isosceles"
+     } else if ((a === c) && (b !== c)) {
+        return "isosceles"
+     } else if ((a !== b) && (b === c)){
+        return "isosceles"
+     } else if ((a !== b) && (b !== c)){
+        return "scalene"
+     }
+  };
+
+$(document).ready(function() {
   $("form#rate").submit(function(event) {
-    var rating1 = parseInt($("input#rating1").val());
-    var rating2 = parseInt($("input#rating2").val());
-    var rating3 = parseInt($("input#rating3").val());
-    var times = parseInt($("#timesyouvacation").val());
+    var a = parseInt($("input#side1").val());
+    var b = parseInt($("input#side2").val());
+    var c = parseInt($("input#side3").val());
 
-    if () {
+    var result = triangletracker(a,b,c);
 
-    } else if () {
+    $("#triangletype").text(result);
 
-    }
-    else {
-
-    }
-
-
-    $("#result").fadeIn().show();
-
-      event.preventDefault();
+    $("#result").show();
+    event.preventDefault();
   });
 });
